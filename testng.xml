@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Honeywell Challenge Suite">
+
+    <test name="End To End Flow">
+        <classes>
+            <class name="tests.EndToEndTestWithFreshSSCC" />
+            <class name="tests.WebIntegrationTest" />
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,40 @@
+# --- Maven & Build ---
+target/
+*.jar
+*.war
+*.ear
+
+# --- IntelliJ IDEA (IDE Ayarları) ---
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# --- Allure Reports & Test Results ---
+.allure/
+allure-results/
+allure-report/
+test-output/
+
+# --- Selenium Drivers ---
+drivers/
+chromedriver
+geckodriver
+*.exe
+
+# --- Operating System Files ---
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# --- Logs ---
+*.log
+
+# Security - hide config file
+src/test/resources/config.properties

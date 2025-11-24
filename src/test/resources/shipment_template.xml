@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:auth="http://prod.itg.plus.movilizer.cloud/misl/schemas/v1.0/auth/"
+        xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+        xmlns:stan="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"
+        xmlns:tpd="http://prod.itg.plus.movilizer.cloud/misl/schemas/v1.0/tpd-extension/"
+        xmlns:cds="http://prod.itg.plus.movilizer.cloud/misl/schemas/v1.0/cds/">
+    <soap:Header>
+        <auth:username>{{shipment.username}}</auth:username>
+        <auth:password>{{shipment.password}}</auth:password>
+    </soap:Header>
+    <soap:Body>
+        <epcis:EPCISDocument creationDate="{{EVENT_TIME}}" schemaVersion="1.2">
+            <EPCISBody>
+                <EventList>
+                    <ObjectEvent>
+                        <eventTime>{{EVENT_TIME}}</eventTime>
+                        <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
+                        <epcList>
+                            <epc>{{SSCC}}</epc>
+                        </epcList>
+                        <action>OBSERVE</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+                        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+                        <bizLocation>
+                            <id>{{LOCATION_ID}}</id>
+                        </bizLocation>
+                        <bizTransactionList>
+                            <bizTransaction type="urn:itg:field:cds:message_id">{{MESSAGE_ID}}</bizTransaction>
+                            <bizTransaction type="urn:itg:field:cds:transaction_id">{{TRANSACTION_ID}}</bizTransaction>
+                            <bizTransaction type="urn:itg:field:tpd:Transport_vehicle">JAS-02-02</bizTransaction>
+                            <bizTransaction type="urn:epcglobal:cbv:btt:desadv">urn:itg:id:dnn:{{DELIVERY_NOTE_ID}}</bizTransaction>
+                            <bizTransaction type="urn:epcglobal:cbv:btt:po">urn:itg:id:order:100</bizTransaction>
+                        </bizTransactionList>
+                        <extension>
+                            <sourceList>
+                                <source type="urn:epcglobal:cbv:sdt:owning_party">urn:itg:id:tpd:eoid:LEWL1EBvnDgp</source>
+                            </sourceList>
+                        </extension>
+                        <tpd:Message_Type>3-3</tpd:Message_Type>
+                        <tpd:Transport_mode>1</tpd:Transport_mode>
+                        <tpd:UI_Type>1</tpd:UI_Type>
+                        <tpd:upUIs>
+                            <tpd:epc>{{SSCC}}</tpd:epc>
+                        </tpd:upUIs>
+                        <cds:loadType>pallet</cds:loadType>
+                    </ObjectEvent>
+                </EventList>
+            </EPCISBody>
+        </epcis:EPCISDocument>
+    </soap:Body>
+</soap:Envelope>

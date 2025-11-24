@@ -1,0 +1,14 @@
+# Base URL
+base.url=https://qa.itg.plus.movilizer.cloud
+
+# App Credentials (FILL THESE IN LOCAL)
+app.email=YOUR_EMAIL_HERE
+app.username=YOUR_USERNAME_HERE
+app.password=YOUR_PASSWORD_HERE
+
+# Shipment Service Credentials (FILL THESE IN LOCAL)
+shipment.username=YOUR_SHIPMENT_USERNAME
+shipment.password=YOUR_SHIPMENT_PASSWORD
+
+# Settings
+max.polling.duration=5
