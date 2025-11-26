@@ -1,9 +1,7 @@
 package tests;
 
 import config.ConfigReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,11 +22,13 @@ public class WebIntegrationTest {
     }
 
     @Test
-    public void testWebValidationFlow() throws InterruptedException {
+    public void testWebValidationFlow() {
+        // --- STEP 2: Data Transfer from API test ---
         String ssccToTest = TestContext.SHARED_SSCC;
+        System.out.println("Will be searching for SSCC: " + ssccToTest);
 
-        System.out.println("Web Testing Starts. Searching for SSCC: " + ssccToTest);
 
+        // --- STEP 1: Authentication ---
         driver.get(ConfigReader.getProperty("base.url") +"/Portal/");
 
         LoginPage loginPage = new LoginPage(driver);
@@ -37,14 +37,16 @@ public class WebIntegrationTest {
                 ConfigReader.getProperty("app.password")
         );
 
+        // --- STEP 3: Data Transfer from API test ---
         HomePage homePage = new HomePage(driver);
         homePage.navigateToTrackTraceForManufacturers();
 
         TrackTraceForManufacturersPage trackTraceForManufacturersPage = new TrackTraceForManufacturersPage(driver);
         trackTraceForManufacturersPage.clickOnHierarchyBrowser();
+        trackTraceForManufacturersPage.searchCode(ssccToTest);
 
-//        boolean isCompliant = hierarchyPage.isCompliant();
-//        Assert.assertTrue(isCompliant, "Pallet status is NOT Compliant!");
+        // --- STEP 4: Validation ---
+        Assert.assertTrue(trackTraceForManufacturersPage.isCompliant(), "Pallet status is NOT Compliant!");
     }
 
     @AfterClass
