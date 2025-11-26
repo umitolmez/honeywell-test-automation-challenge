@@ -21,6 +21,7 @@
         <webdrivermanager.version>5.6.3</webdrivermanager.version>
         <allure.version>2.24.0</allure.version>
         <maven.surefire.plugin.version>3.2.3</maven.surefire.plugin.version>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
 
     <dependencies>
@@ -105,7 +106,7 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

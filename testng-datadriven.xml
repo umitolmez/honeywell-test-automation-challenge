@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Honeywell Data Driven Suite">
+    <test name="API Test (Excel Data Driven)">
+        <classes>
+            <class name="tests.EndToEndTestWithExcelFile" />
+        </classes>
+    </test>
+</suite>

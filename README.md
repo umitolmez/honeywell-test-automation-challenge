@@ -78,13 +78,11 @@ This project uses a `config.properties` file for credentials. For security reaso
 Run the tests via Maven command line:
 
 ```bash
-# Run the main End-to-End test
-mvn clean test -Dtest=EndToEndTestWithFreshSSCC
-mvn clean test -Dtest=EndToEndTestWithExcelFile
+# To run E2E Flow (Fresh Data + Web UI)
+mvn clean test -DsuiteXmlFile=testng-e2e.xml
 
+# To run API Test (Excel Data Driven)
 mvn clean test -DsuiteXmlFile=testng.xml
-
-
 ```
 
 ### Reporting
