@@ -189,16 +189,15 @@ public class EndToEndTestWithExcelFile {
                     isValidationSuccessful = true;
                     break;
                 } else {
-                    // Hata vermeden log bas
-                    String typeStr = (replyObj != null) ? replyObj.getClass().getSimpleName() : "null";
-                    System.out.println("Validation Pending. Status: " + status + ", Reply Type: " + typeStr);
+//                    String typeStr = (replyObj != null) ? replyObj.getClass().getSimpleName() : "null";
+//                    System.out.println("Validation Pending. Status: " + status + ", Reply Type: " + typeStr);
                 }
             } else {
                 System.out.println("API Error: " + valResponse.getStatusCode());
             }
 
-            System.out.println("Waiting... (Retrying in 10s)");
-            Thread.sleep(10000);
+            System.out.println("Waiting... (Retrying in 1s)");
+            Thread.sleep(1000);
         }
 
         Assert.assertTrue(isValidationSuccessful, "Validation timeout! Shipment could not be verified within "
