@@ -82,7 +82,7 @@ Run the tests via Maven command line:
 mvn clean test -DsuiteXmlFile=testng-e2e.xml
 
 # To run API Test (Excel Data Driven)
-mvn clean test -DsuiteXmlFile=testng.xml
+mvn clean test -DsuiteXmlFile=testng-datadriven.xml
 ```
 
 ### Reporting
